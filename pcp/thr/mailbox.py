@@ -13,7 +13,7 @@ class Mailbox:
 
     def pull(self):
         with self.cv:
-            self.cv.wait_for(self._is_item_available)
+            self.cv.wait_for(predicate=self._is_item_available)
         return self.box.pop()
 
     def _is_item_available(self):
